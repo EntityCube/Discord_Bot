@@ -3,18 +3,19 @@ from discord.ext.commands import Bot
 import random
 import requests
 import time
+import base64
+
 
 
 BOT_PREFIX = ("!", "?", ">")
-PECKY = 'NTU1NjQzNTA5MzExNDA2MTAx.D2wiMA.j1whoXysZKIY57YSY9mienbXDTo'  # pecky
-VERIFY = "NTUxNTg2NDUzODMwODkzNTc5.D1zKrA.WDl6XatZDnWwqFHEiYRZOnP_DJU"  # verifybot
+PECKY  = base64.b64decode(b'TlRVMU5qUXpOVEE1TXpFeE5EQTJNVEF4LkQyd2lLQS5Wb1JJU3VuZHc5bWU5YThickFISE8zVWRiZ2M=').decode("utf-8") # pecky
+VERIFY = base64.b64decode(b'TlRVeE5UZzJORFV6T0RNd09Ea3pOVGM1LkQxektyQS5XRGw2WGF0WkRuV3dxRkhFaVlSWk9uUF9ESlU=').decode("utf-8")  # verifybot
 client = Bot(command_prefix=BOT_PREFIX)
-Deleted_Messages = []
 
 #Ready
-@client.eventD
+@client.event
 async def on_ready():
-    print("Bot is living")
+    print(client.user.name + " is breathing and healthy")
 
 # Shows prefix
 @client.command(description="You can use '!' or '?' or '>' as prefix", brief='! or ? or >')
@@ -52,4 +53,4 @@ async def list_servers():
         await asyncio.sleep(60*10)
 
 client.loop.create_task(list_servers())
-client.run(VERIFY)
+client.run(PECKY)
